@@ -77,13 +77,46 @@ Should show texconv help output.
 
 5. Click "Export" and choose save location
 
-### Recommended Settings
+### Recommended Settings by Game
+
+All games require **power-of-two texture sizes** (512, 1024, 2048, 4096 pixels).
+
+#### **Fallout: New Vegas & Fallout 4**
+
+| Texture Type | Format | Mipmaps | sRGB | Notes |
+|----------|--------|---------|------|-------|
+| Diffuse/Color (Opaque) | BC1/DXT1 | ✓ | ✓ | No alpha channel |
+| Diffuse/Color (Alpha) | BC3/DXT5 | ✓ | ✓ | With transparency |
+| Normal Maps | BC3/DXT5 | ✓ | ✗ | Linear color space |
+| Specular/Masks | BC1/DXT1 or BC3/DXT5 | ✓ | ✓ | Use DXT5 if alpha needed |
+
+#### **Skyrim (Vanilla & Special Edition)**
+
+| Texture Type | Format | Mipmaps | sRGB | Notes |
+|----------|--------|---------|------|-------|
+| Diffuse/Albedo (Opaque) | BC1/DXT1 | ✓ | ✓ | No alpha channel |
+| Diffuse/Albedo (Alpha) | BC3/DXT5 | ✓ | ✓ | With transparency |
+| Normal Maps | BC3/DXT5 | ✓ | ✗ | Preserves alpha for parallax |
+| Specular/Masks | BC1/DXT1 or BC3/DXT5 | ✓ | ✓ | Use DXT5 if alpha needed |
+
+**Note:** Skyrim and Fallout 4 share identical DDS requirements as they use the same engine generation.
+
+#### **Starfield** (Different requirements)
+
+| Texture Type | Format | Mipmaps | sRGB | Notes |
+|----------|--------|---------|------|-------|
+| Diffuse/Albedo | BC7 (or DXT5) | ✓ | ✓ | BC7 preferred for quality |
+| Normal Maps | BC5 (or DXT5) | ✓ | ✗ | BC5 ideal if supported |
+| Masks/Grayscale | BC4 (or DXT1) | ✓ | ✓ | BC4 ideal for single-channel |
+| Specular/Detail | BC7 (or DXT5) | ✓ | ✓ | BC7 preferred for quality |
+
+**Note:** Starfield uses the Creation Engine 2 and supports higher-quality BC4/BC5/BC7 compression. Fallback to DXT5 if your plugin doesn't support BC formats.
+
+#### **General/High Quality Export**
 
 | Use Case | Format | Mipmaps | sRGB | Notes |
 |----------|--------|---------|------|-------|
 | Game Textures | BC3/DXT5 | ✓ | ✓ | Best quality/compression balance |
-| Diffuse Maps | BC3/DXT5 | ✓ | ✓ | Color data should be sRGB |
-| Normal Maps | BC5/RG | ✓ | ✗ | Linear color space for normals |
 | High Quality | BC7 | ✓ | ✓ | Best quality, slower compression |
 | Lightweight | BC1/DXT1 | ✓ | ✓ | Fast, smallest size |
 | Alpha Textures | BC2/DXT3 | ✓ | ✓ | For 1-bit/binary alpha |
@@ -310,6 +343,7 @@ If you encounter issues:
 - Improved error handling and validation
 - Full unit test suite
 - Auto-detection of texconv via PATH or environment variable
+- Game-specific DDS settings for Fallout New Vegas, Fallout 4, Skyrim, and Starfield
 
 ---
 
