@@ -6,8 +6,8 @@ GIMP DDS Export Plugin using texconv
 Provides a complete DDS export workflow with progress feedback, comprehensive logging,
 and support for various DDS compression formats.
 
-Author: Tenir
-Version: 2.0
+Author: MkHaters
+Version: 3.0
 GIMP Compatibility: 3.0+
 """
 
