@@ -1,6 +1,6 @@
 # GIMP DDS Export Plugin - Setup & Usage Guide
 
-## Version 2.0 - Complete Refactor
+## Version 3.0 - Complete Refactor
 
 This guide covers installation, configuration, and troubleshooting of the improved DDS export plugin.
 
@@ -49,7 +49,7 @@ Should show texconv help output.
 ### Step 2: Install GIMP Plugin
 
 1. Place `dds_tools.py` in your GIMP plug-ins folder:
-   - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\`
+   - **Windows**: `%LOCALAPPDATA%\Local\Programs\GIMP 3\lib\gimp\3.0\plug-ins\dds_tools\`
    - **Linux**: `~/.config/GIMP/3.0/plug-ins/`
    - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/`
 
